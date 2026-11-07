@@ -1,0 +1,27 @@
+# Maintainer: VOTRE NOM <votre@email>
+# Modèle à adapter : remplacer VOTRE_COMPTE par votre compte GitHub, puis lancer « updpkgsums ».
+pkgname=amigaguide-viewer
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Visionneuse de documents AmigaGuide pour KDE Plasma (Qt 6 / Kirigami)"
+arch=('x86_64')
+url="https://github.com/VOTRE_COMPTE/amigaguide-viewer"
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-declarative' 'kirigami' 'qqc2-desktop-style')
+makedepends=('cmake')
+optdepends=('kimageformats: images IFF dans les guides'
+            'kate: édition des guides depuis le visionneur')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cmake -B build -S "$pkgname-$pkgver" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
