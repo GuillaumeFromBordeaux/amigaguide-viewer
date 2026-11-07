@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=AmigaGuide Viewer
+GenericName=AmigaGuide document viewer
+Comment=Lecteur de fichiers AmigaGuide
+Exec=amigaguide-viewer %f
+Icon=document-preview-archive
+Categories=Qt;KDE;Utility;Viewer;
+MimeType=text/x-amigaguide;
+Keywords=amiga;guide;amigaguide;hypertext;
+Terminal=false

@@ -1,1 +1,13 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="text/x-amigaguide">
+    <comment>AmigaGuide document</comment>
+    <comment xml:lang="fr">Document AmigaGuide</comment>
+    <sub-class-of type="text/plain"/>
+    <magic priority="60">
+      <match type="string" value="@database" offset="0:64"/>
+      <match type="string" value="@DATABASE" offset="0:64"/>
+    </magic>
+    <glob pattern="*.guide"/>
+  </mime-type>
+</mime-info>
