@@ -2,8 +2,7 @@
 
 Visionneuse de documents **AmigaGuide** (`.guide`) pour **KDE Plasma**, écrite en C++ avec Qt 6 et l'interface Kirigami.
 
-<!-- Ajoutez une capture d'écran : docs/screenshot.png, puis décommentez la ligne suivante -->
-<!-- ![Capture d'écran](docs/screenshot.png) -->
+![Capture d'écran d'AmigaGuide Viewer](screenshot.png)
 
 > Projet indépendant : il n'est affilié ni à Hyperion Entertainment ni aux détenteurs des marques Amiga.
 
