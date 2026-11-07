@@ -1,0 +1,55 @@
+@database "Exemple.guide"
+@$VER: Exemple 1.0
+@author "Test"
+@index INDEX
+
+@node MAIN "Bienvenue"
+@next Styles
+
+@{jcenter}@{b}Guide d'exemple@{ub}@{jleft}
+
+Ceci est un @{i}viewer@{ui} AmigaGuide pour @{u}Plasma@{uu}.
+
+  @{" Les styles    " link Styles}   Gras, couleurs, etc.
+  @{" Les liens     " link Liens}    Liens internes et externes
+  @{" Les images    " link Images}   Images integrees (AmigaOS 3.2)
+  @{" Lancer un script " system "echo hello"}  (non exécuté)
+
+Un arobase echappe : \@ et un antislash : \\
+@endnode
+
+@node Styles "Styles de texte"
+@{b}Gras@{ub} @{i}Italique@{ui} @{u}Souligne@{uu}
+@{fg fill}Texte colore@{fg text} puis normal.
+@{fg highlight}@{b}Rouge et gras@{plain} puis retour a la normale.
+
+@{lindent 4}Ce paragraphe est indente de 4 espaces.
+@{lindent 0}
+@{" Retour au sommaire " link MAIN}
+@endnode
+
+@node Liens "Liens"
+Lien vers un autre fichier : @{"autre.guide" link "autre.guide/MAIN"}
+@{" Retour " link MAIN}
+@endnode
+
+@node Images "Images integrees"
+Forme officielle AmigaOS 3.2 :  \@{img "sample.png"}
+@{img "sample.png"}
+
+Forme alternative :  \@{"sample.png" img}
+@{"sample.png" img}
+
+Casse differente et assign GUIDEDIR : @{img "GUIDEDIR:SAMPLE.PNG"}
+
+Fichier absent : @{img "inexistant.iff"}
+
+@{" Retour " link MAIN}
+@endnode
+
+@node INDEX "Index"
+@{" Images " link Images}
+@{" Bienvenue " link MAIN}
+@{" Styles " link Styles}
+@{" Liens " link Liens}
+@endnode

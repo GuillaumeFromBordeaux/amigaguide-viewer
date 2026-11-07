@@ -1,0 +1,9 @@
+# Dossiers de compilation
+build/
+build-*/
+
+# Fichiers d'éditeur
+*.user
+*.kdev4
+.vscode/
+.idea/
