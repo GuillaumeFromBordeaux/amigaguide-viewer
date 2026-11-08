@@ -1,11 +1,9 @@
-# Maintainer: VOTRE NOM <votre@email>
-# Modèle à adapter : remplacer VOTRE_COMPTE par votre compte GitHub, puis lancer « updpkgsums ».
 pkgname=amigaguide-viewer
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Visionneuse de documents AmigaGuide pour KDE Plasma (Qt 6 / Kirigami)"
 arch=('x86_64')
-url="https://github.com/VOTRE_COMPTE/amigaguide-viewer"
+url="https://github.com/GuillaumeFromBordeaux/amigaguide-viewer"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'kirigami' 'qqc2-desktop-style')
 makedepends=('cmake')
