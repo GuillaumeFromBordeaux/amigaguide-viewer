@@ -80,39 +80,62 @@ Kirigami.ApplicationWindow {
 
         property var results: []
 
+        function openFirstResult() {
+            if (results.length > 0) {
+                guide.gotoNode(results[0].key);
+                close();
+            }
+        }
+
         function runSearch() {
             results = searchField.text.trim().length >= 2 ? guide.search(searchField.text) : [];
         }
 
         title: "Rechercher dans le guide"
         standardButtons: Kirigami.Dialog.NoButton
-        preferredWidth: Kirigami.Units.gridUnit * 32
-        preferredHeight: Kirigami.Units.gridUnit * 26
         padding: Kirigami.Units.largeSpacing
         onOpened: {
             searchField.forceActiveFocus();
             searchField.selectAll();
         }
 
-        ColumnLayout {
-            spacing: Kirigami.Units.smallSpacing
+        Item {
+            // Tailles explicites + ancres : la liste ne peut plus être écrasée à une hauteur nulle
+            implicitWidth: Kirigami.Units.gridUnit * 30
+            implicitHeight: Kirigami.Units.gridUnit * 22
 
             Kirigami.SearchField {
                 id: searchField
 
-                Layout.fillWidth: true
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
                 onTextChanged: searchDialog.runSearch()
+                Keys.onReturnPressed: searchDialog.openFirstResult()
+                Keys.onEnterPressed: searchDialog.openFirstResult()
             }
 
             QQC2.Label {
+                id: resultCount
+
+                anchors.top: searchField.bottom
+                anchors.topMargin: Kirigami.Units.smallSpacing
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: visible ? implicitHeight : 0
                 visible: searchField.text.trim().length >= 2
                 opacity: 0.7
                 text: searchDialog.results.length === 0 ? "Aucun résultat" : searchDialog.results.length + " nœud(s) trouvé(s)"
             }
 
             ListView {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+                id: resultList
+
+                anchors.top: resultCount.bottom
+                anchors.topMargin: Kirigami.Units.smallSpacing
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
                 clip: true
                 model: searchDialog.results
 
@@ -145,18 +168,13 @@ Kirigami.ApplicationWindow {
                             opacity: 0.7
                             elide: Text.ElideRight
                         }
-
                     }
-
                 }
 
                 QQC2.ScrollBar.vertical: QQC2.ScrollBar {
                 }
-
             }
-
         }
-
     }
 
     pageStack.initialPage: Kirigami.Page {
