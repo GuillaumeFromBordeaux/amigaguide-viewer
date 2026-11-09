@@ -37,7 +37,7 @@ Sur Arch / Manjaro :
 
 ```bash
 sudo pacman -S --needed base-devel cmake qt6-base qt6-declarative kirigami qqc2-desktop-style
-git clone https://github.com/VOTRE_COMPTE/amigaguide-viewer.git
+git clone https://github.com//GuillaumeFromBordeaux/amigaguide-viewer.git
 cd amigaguide-viewer
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
