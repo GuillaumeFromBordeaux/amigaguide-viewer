@@ -1,6 +1,7 @@
 # AmigaGuide Viewer
 
 Visionneuse de documents **AmigaGuide** (`.guide`) pour **KDE Plasma**, écrite en C++ avec Qt 6 et l'interface Kirigami.
+Pour Ubuntu, Linux Mint et autres distributions sans KDE, il y a une release, (voir installation ci-dessous).
 
 ![Capture d'écran d'AmigaGuide Viewer](screenshot.png)
 
@@ -53,6 +54,32 @@ sudo cmake --install build
 Un modèle de `PKGBUILD` se trouve dans `packaging/arch/`.
 
 Développé et testé sous Manjaro KDE (Qt 6.11, Kirigami 6.30).
+
+## Ubuntu, Linux Mint et autres distributions sans KDE
+
+Ubuntu 24.04 et Linux Mint 22 n'ont pas Kirigami 6 dans leurs dépôts. Le projet propose donc une **seconde interface, sans Kirigami**, qui n'utilise que Qt Quick Controls : même fonctionnement, même disposition, aucun paquet KDE à installer. On la choisit à la compilation avec `-DUSE_KIRIGAMI=OFF`.
+
+Le paquet `.deb` fourni dans les *Releases* est construit ainsi. Pour l'installer :
+
+```bash
+sudo apt install ./amigaguide-viewer_1.0.0_amd64.deb
+```
+
+Pour le compiler vous-même (testé sous Ubuntu 24.04, base de Linux Mint 22) :
+
+```bash
+sudo apt install build-essential cmake qt6-base-dev qt6-declarative-dev libgl1-mesa-dev \
+  qml6-module-qtquick qml6-module-qtqml-workerscript qml6-module-qtquick-window \
+  qml6-module-qtquick-controls qml6-module-qtquick-templates qml6-module-qtquick-layouts \
+  qml6-module-qtquick-dialogs qml6-module-qt-labs-folderlistmodel
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_KIRIGAMI=OFF
+cmake --build build -j$(nproc)
+./build/amigaguide-viewer sample.guide
+```
+
+Pour fabriquer le paquet `.deb` : `cd build && cpack -G DEB`.
+
+Facultatif : `kate` (bouton « Éditer dans Kate ») et `qt6-translations-l10n` (boîtes de dialogue Qt dans votre langue).
 
 ## Images
 
