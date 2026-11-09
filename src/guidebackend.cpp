@@ -292,7 +292,7 @@ void GuideBackend::editInKate()
 
     const QString kate = QStandardPaths::findExecutable(QStringLiteral("kate"));
     if (kate.isEmpty()) {
-        Q_EMIT message(QStringLiteral("Kate est introuvable. Installez-le avec : sudo pacman -S kate"));
+        Q_EMIT message(QStringLiteral("Kate est introuvable. Installez le paquet « kate » avec le gestionnaire de paquets de votre distribution."));
         return;
     }
 
