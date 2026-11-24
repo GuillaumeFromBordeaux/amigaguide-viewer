@@ -22,6 +22,9 @@ int main(int argc, char *argv[])
 #endif
     }
 
+    // Utiliser le rendu logiciel pour éviter les plantages de Qt Quick
+    qputenv("QT_QUICK_BACKEND", "software");
+
     QApplication app(argc, argv);
 
     // Traductions de Qt installées sur le système (paquet qt6-translations-l10n sous Ubuntu)
